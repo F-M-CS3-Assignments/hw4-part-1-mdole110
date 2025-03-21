@@ -47,9 +47,9 @@ vector<int> longest_vector(vector<vector<int>>& candidates){
     return longest_vector;
 }
 int find_next_dividend_position(const vector<int>& input, int start_index){
-    cout << "find_next_dividend_position function ENTERED" << endl;
+    //cout << "find_next_dividend_position function ENTERED" << endl;
     for(int i=start_index; i<input.size(); ++i){
-        cout<< input[i] << "%" << input[start_index-1] << " = " << input[i]%input[start_index-1]<< endl;
+        //cout<< input[i] << "%" << input[start_index-1] << " = " << input[i]%input[start_index-1]<< endl;
         if(input[i]%input[start_index-1]==0){
             return i;
         }
@@ -65,7 +65,7 @@ vector<int> sub_vec(vector<int> input, int next_dividend_position){
         for(int i=next_dividend_position; i<input.size(); i++){
             new_sub_vector.push_back(input[i]);
         }
-        cout << "new sub vec: " << vec_to_string(new_sub_vector);
+        //cout << "new sub vec: " << vec_to_string(new_sub_vector);
         return new_sub_vector;
     }
     else{
@@ -104,7 +104,7 @@ vector<int> bdc_helper(vector<int>& input){
     
     //int next_dividend_position;
     if(input.empty() == true || input.size() == 1){
-        cout << "based case reached" << endl;
+        //cout << "based case reached" << endl;
         return input;
     }
 
@@ -112,7 +112,7 @@ vector<int> bdc_helper(vector<int>& input){
     
     for(size_t i = 0; i<input.size(); i++){ //go thru alll elements in the input
         //cout << "running bdc_helper from index " << i << endl;
-        cout << "lead value: " << input[i] << endl;
+        //cout << "lead value: " << input[i] << endl;
         vector<int> L = {input[i]};
         
         //L.push_back(input[i]);//append the current input to L
@@ -145,29 +145,29 @@ vector<int> bdc_helper(vector<int>& input){
         //THIS FIXES THE SECOND PROBLEM I THINK
         vector<int> Rin = sub_vec(input, next_dividend_position);
         //call the recursive function with the new subvector
-        cout << "left: " << vec_to_string(L)<< endl;
-        cout << "subset: " << vec_to_string(Rin) << endl;
+        //cout << "left: " << vec_to_string(L)<< endl;
+        //cout << "subset: " << vec_to_string(Rin) << endl;
         vector<int> R = bdc_helper(Rin); //R as in Right-hand side
         
-        cout << "right: " << vec_to_string(R) << endl;
+        //cout << "right: " << vec_to_string(R) << endl;
     
             
             vector<int> cand_v = combine(L,R);
             //append this new candidate vector to the candidates vector
             candidates.push_back(cand_v);
-            cout << "found candidate: " << vec_to_string(cand_v) << endl;
+            //cout << "found candidate: " << vec_to_string(cand_v) << endl;
             //cout << "candidates list: " << vec_to_string(candidates) << endl;
        
 
        }
-    cout << "returning longest vector: " << vec_to_string(longest_vector(candidates)) << endl;
+    //cout << "returning longest vector: " << vec_to_string(longest_vector(candidates)) << endl;
     return longest_vector(candidates);
 }
 
 vector<int> biggest_divisible_conglomerate(vector<int> input){
 // base cases 
 //make the output vector 
-cout << "pre-sort: " << vec_to_string(input); //SORTING WORKS
+//cout << "pre-sort: " << vec_to_string(input); //SORTING WORKS
 //vector<int>output;
 vector<int> curr_subset;
  //sort in decreasing order to make sure the L%S (L>S) requirement is met and not messing with calculations
@@ -190,7 +190,7 @@ vector<int> curr_subset;
     //NOW find the largest conglomerate 
     //add the first element to the subset because it can be divided by itself 
     //call bdc helper
-    cout<< "sorted:" << vec_to_string(input); //SORTING TESTED..WORKS
+   
     //cout << "output: " << vec_to_string(output);
 
     //CALL HELPER FUNCTION
